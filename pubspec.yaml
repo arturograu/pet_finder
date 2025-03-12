@@ -13,9 +13,12 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_dotenv: ^5.2.1
   flutter_localizations:
     sdk: flutter
   intl: ^0.19.0
+  petfinder_api_client:
+    path: ./packages/petfinder_api_client
 
 dev_dependencies:
   bloc_test: ^9.1.7
