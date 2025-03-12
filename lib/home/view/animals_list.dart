@@ -24,7 +24,7 @@ class _FailureView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('Failed to load animals');
+    return const Center(child: Text('Failed to load animals'));
   }
 }
 
@@ -45,6 +45,7 @@ class _SuccessView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      itemCount: animals.length,
       itemBuilder: (context, index) {
         final animal = animals[index];
         return AnimalCard(

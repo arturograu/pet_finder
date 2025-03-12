@@ -9,7 +9,7 @@ void main() {
   group('AnimalsRepository', () {
     final testAnimals = [
       api.Animal(
-        id: '1',
+        id: 1,
         organizationId: '1',
         url: 'https://api.petfinder.com/v2/animals/1',
         type: 'Dog',

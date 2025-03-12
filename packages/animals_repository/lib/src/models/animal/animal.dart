@@ -18,7 +18,7 @@ sealed class Animal with _$Animal {
 
   factory Animal.fromApi(api.Animal animal) => Animal(
     name: animal.name,
-    description: animal.description,
+    description: animal.description ?? '',
     age: animal.age,
     gender: animal.gender,
     size: animal.size,

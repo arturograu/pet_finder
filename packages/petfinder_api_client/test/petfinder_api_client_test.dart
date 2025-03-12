@@ -9,21 +9,15 @@ class MockHttpClient extends Mock implements http.Client {}
 
 void main() {
   group('PetfinderApiClient', () {
-    final authUri = Uri.https(
-      PetfinderApiClient.authority,
-      '/developers/v2/oauth2/token',
-    );
-    final animalsUri = Uri.https(
-      PetfinderApiClient.authority,
-      '/developers/v2/animals',
-    );
+    final authUri = Uri.https(PetfinderApiClient.authority, '/v2/oauth2/token');
+    final animalsUri = Uri.https(PetfinderApiClient.authority, '/v2/animals');
     const testTokenResponse = TokenResponse(
       accessToken: 'test_token',
       expiresIn: 3600,
       tokenType: 'Bearer',
     );
     final testAnimal = Animal(
-      id: '1',
+      id: 1,
       organizationId: '1',
       url: 'https://api.petfinder.com/v2/animals/1',
       type: 'Dog',

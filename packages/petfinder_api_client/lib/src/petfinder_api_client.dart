@@ -27,7 +27,7 @@ class PetfinderApiClient {
        _httpClient = httpClient ?? http.Client();
 
   @visibleForTesting
-  static const authority = 'www.petfinder.com';
+  static const authority = 'api.petfinder.com';
 
   final String _clientId;
   final String _clientSecret;
@@ -56,7 +56,7 @@ class PetfinderApiClient {
   /// REST call: `GET /animals`
   Future<AnimalsListResponse> getAnimals() async {
     try {
-      final uri = Uri.https(authority, '/developers/v2/animals');
+      final uri = Uri.https(authority, '/v2/animals');
       final responseBody = await _get(uri);
 
       return AnimalsListResponse.fromJson(responseBody);
@@ -99,7 +99,10 @@ class PetfinderApiClient {
 
   Future<TokenResponse> _requestNewToken() async {
     final response = await _httpClient.post(
-      Uri.https(authority, '/developers/v2/oauth2/token'),
+      Uri.https(authority, '/v2/oauth2/token'),
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
+      },
       body: {
         'grant_type': 'client_credentials',
         'client_id': _clientId,

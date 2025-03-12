@@ -1,7 +1,7 @@
 import 'package:animals_repository/animals_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pet_finder/counter/counter.dart';
+import 'package:pet_finder/home/view/home_page.dart';
 import 'package:pet_finder/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -33,7 +33,7 @@ class _AppView extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const HomePage(),
     );
   }
 }

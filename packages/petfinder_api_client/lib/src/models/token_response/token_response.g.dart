@@ -8,14 +8,14 @@ part of 'token_response.dart';
 
 _TokenResponse _$TokenResponseFromJson(Map<String, dynamic> json) =>
     _TokenResponse(
-      tokenType: json['tokenType'] as String,
-      expiresIn: (json['expiresIn'] as num).toInt(),
-      accessToken: json['accessToken'] as String,
+      tokenType: json['token_type'] as String,
+      expiresIn: (json['expires_in'] as num).toInt(),
+      accessToken: json['access_token'] as String,
     );
 
 Map<String, dynamic> _$TokenResponseToJson(_TokenResponse instance) =>
     <String, dynamic>{
-      'tokenType': instance.tokenType,
-      'expiresIn': instance.expiresIn,
-      'accessToken': instance.accessToken,
+      'token_type': instance.tokenType,
+      'expires_in': instance.expiresIn,
+      'access_token': instance.accessToken,
     };

@@ -7,7 +7,7 @@ part 'animal.g.dart';
 @freezed
 sealed class Animal with _$Animal {
   const factory Animal({
-    required String id,
+    required int id,
     required String organizationId,
     required String url,
     required String type,
@@ -15,12 +15,12 @@ sealed class Animal with _$Animal {
     required String age,
     required String gender,
     required String size,
-    required String coat,
     required String name,
-    required String description,
     required List<Photo> photos,
     required String status,
     required DateTime publishedAt,
+    String? coat,
+    String? description,
   }) = _Animal;
 
   factory Animal.fromJson(Map<String, dynamic> json) => _$AnimalFromJson(json);
