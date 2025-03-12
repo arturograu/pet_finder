@@ -1,0 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'pagination.freezed.dart';
+part 'pagination.g.dart';
+
+@freezed
+sealed class Pagination with _$Pagination {
+  const factory Pagination({
+    required int countPerPage,
+    required int totalCount,
+    required int currentPage,
+    required int totalPages,
+  }) = _Pagination;
+
+  factory Pagination.fromJson(Map<String, dynamic> json) =>
+      _$PaginationFromJson(json);
+}
