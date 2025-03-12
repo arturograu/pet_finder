@@ -1,6 +1,7 @@
 import 'package:animals_repository/animals_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pet_finder/animal_details/animal_details.dart';
 import 'package:pet_finder/home/home.dart';
 
 class AnimalsList extends StatelessWidget {
@@ -52,6 +53,7 @@ class _SuccessView extends StatelessWidget {
           primaryImage: animal.primaryImage,
           name: animal.name,
           status: animal.status,
+          onTap: () => Navigator.push(context, AnimalDetailsPage.route(animal)),
         );
       },
     );

@@ -8,6 +8,7 @@ class AnimalCard extends StatelessWidget {
   const AnimalCard({
     required this.name,
     required this.status,
+    required this.onTap,
     this.primaryImage,
     super.key,
   });
@@ -15,10 +16,12 @@ class AnimalCard extends StatelessWidget {
   final String? primaryImage;
   final String name;
   final String status;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final imageUrl = primaryImage;
+    final theme = Theme.of(context);
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12), // Ensure the card has a radius
@@ -45,10 +48,22 @@ class AnimalCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(name, style: Theme.of(context).textTheme.titleLarge),
-              Text(status, style: Theme.of(context).textTheme.bodyMedium),
+              Text(name, style: theme.textTheme.titleLarge),
+              Text(status, style: theme.textTheme.bodyMedium),
             ],
           ),
+          const Spacer(),
+          IconButton(
+            onPressed: onTap,
+            style: IconButton.styleFrom(
+              backgroundColor: theme.colorScheme.primary,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+            ),
+            icon: const Icon(Icons.arrow_forward_ios, color: Colors.white),
+          ),
+          const SizedBox(width: 12),
         ],
       ),
     );
