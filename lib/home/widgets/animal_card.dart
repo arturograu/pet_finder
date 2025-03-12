@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-const _kImageHeight = 100.0;
+const _kCardHeight = 100.0;
 const _kImageWidth = 100.0;
 const _kImageRadius = 12.0;
 
@@ -29,30 +30,41 @@ class AnimalCard extends StatelessWidget {
       child: Row(
         children: [
           if (imageUrl != null)
-            ClipRRect(
-              borderRadius: BorderRadius.circular(_kImageRadius),
-              child: Image.network(
-                imageUrl,
-                height: _kImageHeight,
-                width: _kImageWidth,
-                fit: BoxFit.contain,
-              ),
-            )
+            _Image(imageUrl: imageUrl)
           else
             const SizedBox(
-              height: _kImageHeight,
+              height: _kCardHeight,
               width: _kImageWidth,
               child: Icon(Icons.image),
             ),
           const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(name, style: theme.textTheme.titleLarge),
-              Text(status, style: theme.textTheme.bodyMedium),
-            ],
+          Expanded(
+            child: SizedBox(
+              height: _kCardHeight,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: Text(
+                      name,
+                      style: theme.textTheme.titleLarge,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Flexible(
+                    child: Text(
+                      status,
+                      style: theme.textTheme.bodyMedium,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-          const Spacer(),
           IconButton(
             onPressed: onTap,
             style: IconButton.styleFrom(
@@ -65,6 +77,36 @@ class AnimalCard extends StatelessWidget {
           ),
           const SizedBox(width: 12),
         ],
+      ),
+    );
+  }
+}
+
+class _Image extends StatelessWidget {
+  const _Image({required this.imageUrl});
+
+  final String imageUrl;
+
+  static const _kProgressIndicatorSize = 24.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(_kImageRadius),
+      child: CachedNetworkImage(
+        height: _kCardHeight,
+        width: _kImageWidth,
+        fit: BoxFit.contain,
+        imageUrl: imageUrl,
+        progressIndicatorBuilder:
+            (_, __, ___) => const Center(
+              child: SizedBox(
+                height: _kProgressIndicatorSize,
+                width: _kProgressIndicatorSize,
+                child: CircularProgressIndicator(),
+              ),
+            ),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
   }

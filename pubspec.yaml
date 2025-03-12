@@ -10,6 +10,7 @@ dependencies:
   animals_repository:
     path: ./packages/animals_repository
   bloc: ^8.1.4
+  cached_network_image: ^3.4.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
