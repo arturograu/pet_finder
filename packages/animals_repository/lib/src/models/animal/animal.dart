@@ -11,6 +11,7 @@ sealed class Animal with _$Animal {
     required String age,
     required String gender,
     required String size,
+    required String status,
     required List<String> gallery,
     String? primaryImage,
   }) = _Animal;
@@ -21,6 +22,7 @@ sealed class Animal with _$Animal {
     age: animal.age,
     gender: animal.gender,
     size: animal.size,
+    status: animal.status,
     primaryImage: animal.photos.isNotEmpty ? animal.photos.first.small : null,
     gallery: animal.photos.map((photo) => photo.full).toList(),
   );
