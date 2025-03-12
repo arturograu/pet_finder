@@ -45,17 +45,21 @@ class _SuccessView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: animals.length,
-      itemBuilder: (context, index) {
-        final animal = animals[index];
-        return AnimalCard(
-          primaryImage: animal.primaryImage,
-          name: animal.name,
-          status: animal.status,
-          onTap: () => Navigator.push(context, AnimalDetailsPage.route(animal)),
+    return animals.isEmpty
+        ? const Center(child: Text('No animals found'))
+        : ListView.builder(
+          itemCount: animals.length,
+          itemBuilder: (context, index) {
+            final animal = animals[index];
+            return AnimalCard(
+              primaryImage: animal.primaryImage,
+              name: animal.name,
+              status: animal.status,
+              onTap:
+                  () =>
+                      Navigator.push(context, AnimalDetailsPage.route(animal)),
+            );
+          },
         );
-      },
-    );
   }
 }
