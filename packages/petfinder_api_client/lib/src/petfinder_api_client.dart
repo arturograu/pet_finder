@@ -11,7 +11,11 @@ class PetfinderApiException implements Exception {
   final String message;
 }
 
+/// {@template petfinder_api_client}
+/// A Dart API Client for the Petfinder API.
+/// {@endtemplate}
 class PetfinderApiClient {
+  /// {@macro petfinder_api_client}
   PetfinderApiClient({
     required String clientId,
     required String clientSecret,
